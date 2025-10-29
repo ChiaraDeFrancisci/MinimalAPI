@@ -5,7 +5,7 @@ namespace DemoCoreVuota;
 public interface IMyClock
 {
     //si possono mettere ora anche proprietà e implementazione delle interfacce
-    //public int Id { get; set; }
+    //public int Id { get; set; }     
     DateTime MyNow();
 }
 public class StaticClock:IMyClock

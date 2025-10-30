@@ -1,4 +1,5 @@
-﻿namespace MyApp.TodoItems;
+﻿
+namespace MyApp.TodoItems;
 
 public class MockItemsService : ITodoItems
 {
@@ -12,9 +13,24 @@ public class MockItemsService : ITodoItems
     //        new TodoItem(2, "la vita prima della vita", true, "paleontologia") 
     //    };    
     //}
-
+    public MockItemsService(IConfiguration config,IOptions<AppSettings> appsetting)
+        //IOptionSnapshot si accorge quando il file cambia e si registra nuovamente il contenuto del file appsetting senza riavviare l'app
+    {
+        this.configuration = config;
+        this.appsetting = appsetting;
+    }
      async Task<List<TodoItem>> ITodoItems.GetAllItems()
     {
+        throw new Exception();
+        //esempio d'uso di configuration per le variabili di ambiente
+        //chiave semplice
+        var miovalore = configuration["MiaChiave"];
+        //chiave complessa prendo valore A
+        var mioValoreComplessoA = configuration["MiaChiaveComplessa:A"];
+        //utilizzo tramite classe IOptions
+        var a = appsetting.Value.A;
+
+
         await Task.Delay(1000);
         //var a = new Product() { Nome = "cosa" };
         return Items;
@@ -29,7 +45,10 @@ public class MockItemsService : ITodoItems
             new TodoItem(1, "pilota elicotteri", false,"sport"),
             new TodoItem(2, "la vita prima della vita", true, "paleontologia")
         };
-     async Task<TodoItem?> ITodoItems.GetItem(int Id)
+    public IConfiguration configuration { get; private set; }
+    public IOptions<AppSettings> appsetting { get; private set; }
+
+    async Task<TodoItem?> ITodoItems.GetItem(int Id)
     {
         await Task.Delay(1000);
         var item = Items.FirstOrDefault(x => x.Id == Id);
@@ -37,6 +56,7 @@ public class MockItemsService : ITodoItems
     }
     public async Task<TodoItem> CreateItem(CreateTodoItem newItem)
     {
+        
         int maxId = 1;
         await Task.Delay(1000);
         if (Items.Count != 0)

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCoreVuota", "DemoCoreVu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSMinimalAPI", "MSMinimalApi\MSMinimalAPI.csproj", "{1FC493A9-7225-CA09-DFCA-78A5E66545BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp", "FunctionApp\FunctionApp.csproj", "{F9B20B73-1679-49ED-8B44-DF4C6D59586B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1FC493A9-7225-CA09-DFCA-78A5E66545BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FC493A9-7225-CA09-DFCA-78A5E66545BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FC493A9-7225-CA09-DFCA-78A5E66545BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9B20B73-1679-49ED-8B44-DF4C6D59586B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9B20B73-1679-49ED-8B44-DF4C6D59586B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9B20B73-1679-49ED-8B44-DF4C6D59586B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9B20B73-1679-49ED-8B44-DF4C6D59586B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

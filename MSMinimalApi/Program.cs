@@ -5,7 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 //metodo custom per gestire le registrazioni ai servizi Http generali per tutte le application
 builder.Services.RegisterHttpServices();
 //metodo custom per gestire le registrazioni di servizi local dell'application
-builder.Services.RegisterServices();
+
+builder.Services.RegisterServices(builder.Configuration);
 var app = builder.Build();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 // Configure the HTTP request pipeline.

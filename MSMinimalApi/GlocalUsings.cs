@@ -11,6 +11,9 @@ global using MSMinimalAPI.Middlewares;
 global using Microsoft.AspNetCore.Mvc;
 global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics;
+global using MSMinimalAPI.Configuration;
+global using Microsoft.Extensions.Options;
+
 
 
 

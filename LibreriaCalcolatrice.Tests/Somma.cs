@@ -74,7 +74,7 @@ public class Somma
     [Fact]
     public void SeEseguoSommaMercoledìRestituisceSommaNormale()
     {
-        //esempio con Moq
+        //esempio con Moq  
         var mock = new Mock<IClock>();
         mock.Setup(clock => clock.Now()).Returns(new DateTime(2025, 10, 29));
         var calcolatrice = new Calcolatrice(mock.Object);

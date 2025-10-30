@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSMinimalAPI", "MSMinimalAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp", "FunctionApp\FunctionApp.csproj", "{F9B20B73-1679-49ED-8B44-DF4C6D59586B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibreriaCalcolatrice", "LibreriaCalcolatrice\LibreriaCalcolatrice.csproj", "{A77130FD-8ABB-41DF-8ECD-F4CD4EB34A18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibreriaCalcolatrice.Tests", "LibreriaCalcolatrice.Tests\LibreriaCalcolatrice.Tests.csproj", "{19DB54FE-7E58-4F1F-B40E-8B879945EF37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{F9B20B73-1679-49ED-8B44-DF4C6D59586B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9B20B73-1679-49ED-8B44-DF4C6D59586B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9B20B73-1679-49ED-8B44-DF4C6D59586B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A77130FD-8ABB-41DF-8ECD-F4CD4EB34A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A77130FD-8ABB-41DF-8ECD-F4CD4EB34A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A77130FD-8ABB-41DF-8ECD-F4CD4EB34A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A77130FD-8ABB-41DF-8ECD-F4CD4EB34A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DB54FE-7E58-4F1F-B40E-8B879945EF37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DB54FE-7E58-4F1F-B40E-8B879945EF37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DB54FE-7E58-4F1F-B40E-8B879945EF37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DB54FE-7E58-4F1F-B40E-8B879945EF37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

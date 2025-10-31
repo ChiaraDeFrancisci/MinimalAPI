@@ -1,7 +1,6 @@
-﻿
-namespace MyApp.TodoItems;
+﻿namespace MSMinimalAPI.TodoItems;
 
-public class MockItemsService : ITodoItems
+public class MockItemsService(IConfiguration config, IOptions<AppSettings> appsetting) : ITodoItems
 {
     //caso sincrono
     //public List<TodoItem> GetAllItems()
@@ -9,26 +8,15 @@ public class MockItemsService : ITodoItems
     //    //var a = new Product() { Nome = "cosa" };
     //    return new List<TodoItem>() {
 
-    //        new TodoItem(1, "pilota elicotteri", false,"sport"),
-    //        new TodoItem(2, "la vita prima della vita", true, "paleontologia") 
-    //    };    
-    //}
-    public MockItemsService(IConfiguration config,IOptions<AppSettings> appsetting)
-        //IOptionSnapshot si accorge quando il file cambia e si registra nuovamente il contenuto del file appsetting senza riavviare l'app
+    async Task<List<TodoItem>> ITodoItems.GetAllItems()
     {
-        this.configuration = config;
-        this.appsetting = appsetting;
-    }
-     async Task<List<TodoItem>> ITodoItems.GetAllItems()
-    {
-        throw new Exception();
         //esempio d'uso di configuration per le variabili di ambiente
         //chiave semplice
-        var miovalore = configuration["MiaChiave"];
+        _ = Configuration["MiaChiave"];
         //chiave complessa prendo valore A
-        var mioValoreComplessoA = configuration["MiaChiaveComplessa:A"];
+        _ = Configuration["MiaChiaveComplessa:A"];
         //utilizzo tramite classe IOptions
-        var a = appsetting.Value.A;
+        _ = appsetting.Value.A;
 
 
         await Task.Delay(1000);
@@ -41,12 +29,12 @@ public class MockItemsService : ITodoItems
         //};
     }
     //inizializzo gli items
-    private static List<TodoItem> Items { get; set; } = new List<TodoItem>() {
+    private static List<TodoItem> Items { get; set; } = [
             new TodoItem(1, "pilota elicotteri", false,"sport"),
             new TodoItem(2, "la vita prima della vita", true, "paleontologia")
-        };
-    public IConfiguration configuration { get; private set; }
-    public IOptions<AppSettings> appsetting { get; private set; }
+        ];
+    public IConfiguration Configuration { get; private set; } = config;
+    public IOptions<AppSettings> Appsetting { get; private set;} = appsetting;
 
     async Task<TodoItem?> ITodoItems.GetItem(int Id)
     {
@@ -61,7 +49,7 @@ public class MockItemsService : ITodoItems
         await Task.Delay(1000);
         if (Items.Count != 0)
             maxId = Items.Max(x => x.Id) + 1;
-        TodoItem item = new TodoItem(maxId, newItem.Title, false, newItem.Category);
+        TodoItem item = new(maxId, newItem.Title, false, newItem.Category);
 
         Items.Add(item);
         return item;

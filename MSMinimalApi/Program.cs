@@ -1,6 +1,8 @@
 
 #region Configuration
 
+using MSMinimalAPI.ExtensionMethods;
+
 var builder = WebApplication.CreateBuilder(args);
 //metodo custom per gestire le registrazioni ai servizi Http generali per tutte le application
 builder.Services.RegisterHttpServices();

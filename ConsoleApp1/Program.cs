@@ -4,12 +4,12 @@ using Azure.Messaging.EventGrid;
 using Azure.Messaging.ServiceBus;
 using Microsoft.Azure.EventGrid.Models;
 #region EventGrid
-Uri endpoint = new Uri("uri");
-AzureKeyCredential key = new AzureKeyCredential("key");
+Uri endpoint = new("uri");
+AzureKeyCredential key = new("key");
 //apro la connessione con il topic Azure
-var connection = new EventGridPublisherClient(endpoint, key);
+EventGridPublisherClient connection = new (endpoint, key);
 //configuro l'evento custom
-var primoEvento = new Azure.Messaging.EventGrid.EventGridEvent(
+Azure.Messaging.EventGrid.EventGridEvent primoEvento = new(
     subject: "Ordine accettato: 1736",
     eventType: "OrdineAccettato",
     dataVersion: "1.0",
@@ -24,7 +24,7 @@ Console.WriteLine("Evento spedito");
 ////genero x eventi
 for (int i = 0; i < 10; i++)
 {
-    var Evento = new Azure.Messaging.EventGrid.EventGridEvent(
+    Azure.Messaging.EventGrid.EventGridEvent Evento = new(
     subject: $"Ordine accettato: {i}",
     eventType: "OrdineAccettato",
     dataVersion: "1.0",
@@ -39,19 +39,19 @@ Console.WriteLine($"Fine trasmissione");
 #endregion
 #region ServiceBus
 //Sender messaggi per il servicebus configurato su Azure - RabbinMQ molto simile
-var queueName = "myqueue";
-var connectionBus = "connectionString";
-var client = new ServiceBusClient(connectionBus);
+string queueName = "myqueue";
+string connectionBus = "connectionString";
+ServiceBusClient client = new(connectionBus);
 
 //aggiunta messaggio
-var sender = client.CreateSender(queueName);
-var batch = await sender.CreateMessageBatchAsync();
+ServiceBusSender sender = client.CreateSender(queueName);
+ServiceBusMessageBatch batch = await sender.CreateMessageBatchAsync();
 
 batch.TryAddMessage(new ServiceBusMessage($"Messaggio"));
 await sender.SendMessagesAsync(batch);
 
 //ascolto stile web socket
-var processor = client.CreateProcessor(queueName);
+ServiceBusProcessor processor = client.CreateProcessor(queueName);
 
 //devo definire 2 delegati handler: quando ricevo messaggio quando non c'è piu
 processor.ProcessMessageAsync += MessageHandler;

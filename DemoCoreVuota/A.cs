@@ -36,7 +36,7 @@ public class TelegramNotification : IMyNotification
         Console.WriteLine("Sending telegram message...");
     }
 }
-public class A
+public class A(B b, IMyClock myClock, IEnumerable<IMyNotification> myNotification)
 {
     //A ora dipende da classe B in modo indissolubile. non ho controllo di quello che succede se quella classe è costretta a creare degli oggetti
     //non è un codice testabile perché ho una dispendenza e non posso dare un test autonomo su A
@@ -47,7 +47,7 @@ public class A
         var data = myClock.MyNow();
 
        
-       myNotification.FirstOrDefault().SendMessage($"{data.ToLongDateString()}");
+       myNotification?.FirstOrDefault()?.SendMessage($"{data.ToLongDateString()}");
         
 
         //QUESTO E' IL MALE! cit.
@@ -57,17 +57,9 @@ public class A
     }
     //usando questo metodo tolgo la dipendenza da B, perché è il costruttore che crea B e lo mette a disposizione
     //iniezione dipendenza tramite costruttore
-    private readonly B b;
-    private readonly IMyClock myClock;
-    private readonly IEnumerable<IMyNotification> myNotification;
-
-    public A(B b,IMyClock myClock,IEnumerable<IMyNotification> myNotification)
-    {
-        this.b = b;
-        this.myClock = myClock;
-        this.myNotification = myNotification;
-
-    }
+    private readonly B b = b;
+    private readonly IMyClock myClock = myClock;
+    private readonly IEnumerable<IMyNotification> myNotification = myNotification;
 }
 
 public class B

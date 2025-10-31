@@ -9,7 +9,7 @@ AzureKeyCredential key = new AzureKeyCredential("key");
 //apro la connessione con il topic Azure
 var connection = new EventGridPublisherClient(endpoint, key);
 //configuro l'evento custom
-var primoEvento = new EventGridEvent(
+var primoEvento = new Azure.Messaging.EventGrid.EventGridEvent(
     subject: "Ordine accettato: 1736",
     eventType: "OrdineAccettato",
     dataVersion: "1.0",
@@ -24,7 +24,7 @@ Console.WriteLine("Evento spedito");
 ////genero x eventi
 for (int i = 0; i < 10; i++)
 {
-    var Evento = new EventGridEvent(
+    var Evento = new Azure.Messaging.EventGrid.EventGridEvent(
     subject: $"Ordine accettato: {i}",
     eventType: "OrdineAccettato",
     dataVersion: "1.0",
